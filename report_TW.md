@@ -1,8 +1,8 @@
 # MIP 280A4 Final Project 2022
-This report is catorgerizingand identifiying a virus sequence from a female Aedes aegypti originially from Guerrero, Mexico. This one was taken from the colony at the center for vector-borne infectious diseases (CVID)
+This report is catorgerizing and identifiying virus sequences from a female Aedes aegypti originially from Guerrero, Mexico. This mosquito was taken from the colony at the center for vector-borne infectious diseases (CVID). I will use the thoth01 server through linux to help clean up and assemble my sequenced data. The cleaned up data will be analyzed with genius, NCBI blast, and fastqc. 
 it is written in [markdown formaty](https://www.markdownguide.org/basic-syntax/).
 ## step 1: copying the file to a new directory
-https://github.com/twolbers/2022_MIP_280A4_final_project.git
+(bio_tools) twolbers@thoth01:/home/data_for_classes/2022_MIP_280A4/final_project_datasets$ cp Aedes_Guerrero_R1.fastq ~/final_project
 ## step 2: Quality check of seqeunce using [fastqc]
 bio_tools) twolbers@thoth01:~/final_project$ fastqc Aedes_Guerrero_R1.fastq
 ## step 3: Trim addaptors and low quality reads using [cutadapt]
@@ -17,7 +17,7 @@ Began by looking at the taxonomy page on the NCBI website, found Aedes aegypti, 
 ## step 7: map trimmed reads to host index and save non-mapped reads
 The goal was to take out all of the Aedes agypti sequences so we can assemble just the reads that arent part of the mosquitoe. below is the command that we ran.
 (bio_tools) twolbers@thoth01:~/final_project$ rm Aedes_Guerrero_not_mapped_to_mosq_index.2.fastq          (not done)
-## step 8: Assemble non-mapped reads using [spades]
+## step 8: Assemble non-mapped reads using [spades
 The non-assembled reads will be turned into different contigs that will assemble to make a sequence that should be very close to the virus the mosquitoe is carrying. Below is the command we ran to assemble the sequence.
 (bio_tools) twolbers@thoth01:~/final_project$ spades.py -o Aedes_Guerrero_spades_assembly -1 Aedes_Guerrero_not_mapped_to_mosq_index.fastq -m 24 -t 18 
 
