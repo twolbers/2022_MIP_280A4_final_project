@@ -7,7 +7,7 @@ it is written in [markdown format](https://www.markdownguide.org/basic-syntax/).
 ```
 ## step 2: Quality check of seqeunce using [fastqc]
 ```
-bio_tools) twolbers@thoth01:~/final_project$ fastqc Aedes_Guerrero_R1.fastq
+(bio_tools) twolbers@thoth01:~/final_project$ fastqc Aedes_Guerrero_R1.fastq
 ```
 This is the fastqc quality report. 
 ## step 3: Trim addaptors and low quality reads using [cutadapt]
