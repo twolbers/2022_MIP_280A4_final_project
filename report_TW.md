@@ -7,14 +7,21 @@ To perform this command we need to make sure we are in the correct working direc
 (bio_tools) twolbers@thoth01:/home/data_for_classes/2022_MIP_280A4/final_project_datasets$ cp Aedes_Guerrero_R1.fastq ~/final_project
 ```
 ## step 2: Quality check of seqeunce using [fastqc]
+The next steps in linux requires you to use commands that are not in your ```PATH```, to use these commands we need to enter the conda enviornment. The ```conda``` enviornment will put the appropriate directory in your ```PATH``` allowing you to run commands like [fastqc], [cutadapt], [spades], and many more that are not used in this project. run the command below to enter your ```conda``` enviornment.
+```
+(base) twolbers@thoth01:~/final_project$ conda activate bio_tools
+```
 The libraries were sequenced using a illumina next gen sequencer to produce single end sequences that are 150 base reads long. The illumina next gen sequencer can produce low quality reads and sometimes sequences your adapters, because of this we will have to check the quality of the reads before anything else. 
 ```
 (bio_tools) twolbers@thoth01:~/final_project$ fastqc Aedes_Guerrero_R1.fastq
 ```
+<img src="Screenshot_20221207_024335.png">
+
 <img src="Screenshot_20221207_024237.png">
 
-This graph shows 
+The illumina sequencing data is roughly 1.5 million reads long. The lowest quality score is 16, but the average is about 34. The graphs show that the quality of the reads are low near the end of the reads. The second graph specifically shows that these low reads are coming from adaters well need to trim these reads to get rid of adapters and low quality reads.
 ## step 3: Trim addapters and low quality reads using [cutadapt]
+After checking the quality reports of or illumina sequencing data we will need to trim the low quality reads with the command below.
 ```
 (bio_tools) twolbers@thoth01:~/final_project$ cutadapt \
 -a AGATCGGAAGAGC \
@@ -31,16 +38,17 @@ Aedes_Guerrero_R1.fastq \
 ```
 (bio_tools) twolbers@thoth01:~/final_project$ fastqc Aedes_Guerrero_trimmed1
 ```
+<img src="Screenshot_20221207_024458.png">
+<img src="Screenshot_20221207_024528.png">
+
+The quality report on the trimmed reads above shows that the [cutadapt] trim command took care of the reads that had a quality score of 16. The second graph shows that there are no more adapter reads that would have ultimately not mapped correctly.
 ## step 5: find and download host genome in fasta format
-Began by looking at the taxonomy page on the NCBI website, found Aedes aegypti, copied the URL. Using the command below I added it to my /final_project directory.
+We are going to need to seperate the reads from our msoguitos from the reads that could possibly be a virus. Open the NCBI website, find Aedes aegypti genome, copy the url and run the command below. Note: it is important to make sure you are in the directory that your trimmed sequence is in.
 ```
-(base) twolbers@thoth01:/home/data_for_classes/2022_MIP_280A4/final_project_datasets$ cd
-(base) twolbers@thoth01:~$ cd final_project 
 (base) twolbers@thoth01:~/final_project$ curl -OL \ https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/002/204/515/GCF_002204515.2_AaegL5.0/GCF_002204515.2_AaegL5.0_genomic.fna.gz
 ```
-## step 6: Create an index for our Aedes aegypti seqeunce from NCBI using [bowtie2-build]
+## step 6: Create an index for our Aedes aegypti seqeunce from NCBI using [bowtie2-build] 
 ```
-(base) twolbers@thoth01:~/final_project$ conda activate bio_tools 
 (bio_tools) twolbers@thoth01:~/final_project$ nohup bowtie2-build \
 GCF_002204515.2_AaegL5.0_genomic.fna.gz index
 ```
