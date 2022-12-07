@@ -43,7 +43,7 @@ Aedes_Guerrero_R1.fastq \
 
 The quality report on the trimmed reads above shows that the [cutadapt] trim command took care of the reads that had a quality score of 16. The second graph shows that there are no more adapter reads that would have ultimately not mapped correctly.
 ## step 5: find and download host genome in fasta format
-We are going to need to seperate the reads from our msoguitos from the reads that could possibly be a virus. Open the NCBI website, find Aedes aegypti genome, copy the url and run the command below. Note: it is important to make sure you are in the directory that your trimmed sequence is in.
+We are going to need to seperate the reads from our mosquitos from the reads that could possibly be a virus. Open the NCBI website, find Aedes aegypti genome, copy the url and run the command below. Note: it is important to make sure you are in the directory that your trimmed sequence is in.
 ```
 (base) twolbers@thoth01:~/final_project$ curl -OL \ https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/002/204/515/GCF_002204515.2_AaegL5.0/GCF_002204515.2_AaegL5.0_genomic.fna.gz
 ```
