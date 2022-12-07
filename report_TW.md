@@ -2,15 +2,17 @@
 This report is catorgerizing and identifiying virus sequences from a female Aedes aegypti originially from Guerrero, Mexico. This mosquito was taken from the colony at the center for vector-borne infectious diseases (CVID). I will use the thoth01 server through linux to help clean up and assemble my sequenced data. The cleaned up data will be analyzed with genius, NCBI blast, and fastqc. 
 it is written in [markdown format](https://www.markdownguide.org/basic-syntax/).
 ## step 1: copying the file to a new directory
+To perform this command we need to make sure we are in the correct working directory a good way to check this is by running the ```pwd``` command. We also need to know that the file we want to copy is in our directory, a good comman for this is ```ls -lrth```. Now you can run the command below to move it into your new directory.
 ```
 (bio_tools) twolbers@thoth01:/home/data_for_classes/2022_MIP_280A4/final_project_datasets$ cp Aedes_Guerrero_R1.fastq ~/final_project
 ```
 ## step 2: Quality check of seqeunce using [fastqc]
+The libraries were sequenced using a illumina next gen sequencer to produce single end sequences that are 150 base reads long. The illumina next gen sequencer can produce low quality reads and sometimes sequences your adapters, because of this we will have to check the quality of the reads before anything else. 
 ```
 (bio_tools) twolbers@thoth01:~/final_project$ fastqc Aedes_Guerrero_R1.fastq
 ```
-This is the fastqc quality report. [quality report](\Users\twolbers\Downloads\Aedes_Guerrero_R1.fastq FastQC Report.html).
-## step 3: Trim addaptors and low quality reads using [cutadapt]
+This is the fastqc quality report. [quality report].
+## step 3: Trim addapters and low quality reads using [cutadapt]
 ```
 (bio_tools) twolbers@thoth01:~/final_project$ cutadapt \
 -a AGATCGGAAGAGC \
