@@ -58,5 +58,6 @@ The non-assembled reads will be turned into different contigs that will assemble
 -1 Aedes_Guerrero_not_mapped_to_mosq_index.fastq \
 -m 24 -t 18 
 ```
-
+## step 9: run a blast search on first 12 contigs using NCBI
+Using cyber duck get 
 
