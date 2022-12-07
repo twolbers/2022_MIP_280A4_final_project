@@ -9,7 +9,7 @@ it is written in [markdown format](https://www.markdownguide.org/basic-syntax/).
 ```
 (bio_tools) twolbers@thoth01:~/final_project$ fastqc Aedes_Guerrero_R1.fastq
 ```
-This is the fastqc quality report. [click here] (file:///C:/Users/twolbers/Downloads/Aedes_Guerrero_R1.fastq%20FastQC%20Report.html)
+This is the fastqc quality report. [quality report](\Users\twolbers\Downloads\Aedes_Guerrero_R1.fastq FastQC Report.html).
 ## step 3: Trim addaptors and low quality reads using [cutadapt]
 ```
 (bio_tools) twolbers@thoth01:~/final_project$ cutadapt \
