@@ -48,12 +48,13 @@ We are going to need to seperate the reads from our mosquitos from the reads tha
 (base) twolbers@thoth01:~/final_project$ curl -OL \ https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/002/204/515/GCF_002204515.2_AaegL5.0/GCF_002204515.2_AaegL5.0_genomic.fna.gz
 ```
 ## step 6: Create an index for our Aedes aegypti seqeunce from NCBI using [bowtie2-build] 
+complete genome sequences are often very large, to make it easier for the server we will create an index. The index will essentially be cut up pieces of the genome so that when we go to map it is easier. However creating the index can still take some time for the server we will also be using an extra command, the ```nohup``` command will allow for the server to continue the task while you are logged off. Run the command below to make an index of the Aedes aegypti complete genome.
 ```
 (bio_tools) twolbers@thoth01:~/final_project$ nohup bowtie2-build \
 GCF_002204515.2_AaegL5.0_genomic.fna.gz index
 ```
 ## step 7: map trimmed reads to host index and save non-mapped reads
-The goal was to take out all of the Aedes agypti sequences so we can assemble just the reads that arent part of the mosquitoe. below is the command that we ran.
+Mapping requires two sequences your mapping input, in this case the trimmed data set, and a reference sequence, the Aedes aegypti complete genome. The input sequence will map to the refrence sequence, mapping is can be used for a few things, quantification, variant identification, and removing known sequences we do not want to asseble. We will be using it to get rid of any reads that map to the Aedes aegypti, because we want to find the virus sequence. below is the command ran to map the reads to the Aedes aegypti index, because we want to see the unmapped reads we will use the command ```--un``` and then save it to a file that is accurate to what is in it such asAedes_Guerrero_not_mapped_to_mosq_index.fastq.
 ```
 bowtie2 -x  \ index
    -U Aedes_Guerrero_trimmed1 \
