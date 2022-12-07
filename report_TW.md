@@ -12,6 +12,7 @@ The libraries were sequenced using a illumina next gen sequencer to produce sing
 (bio_tools) twolbers@thoth01:~/final_project$ fastqc Aedes_Guerrero_R1.fastq
 ```
 <img src="Screenshot_20221207_024237.png">
+
 This graph shows 
 ## step 3: Trim addapters and low quality reads using [cutadapt]
 ```
