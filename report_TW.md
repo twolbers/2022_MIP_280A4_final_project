@@ -3,6 +3,7 @@ This report will provide a step by step walk through on my project for MIP 280A4
 it is written in [markdown format](https://www.markdownguide.org/basic-syntax/).
 ## Virus Hunting with Aedes aegypti from Guerreo, Mexico
 <img src="Screenshot_20221207_090808.png">
+
 ## step 1: copying the file to a new directory
 To perform this command we need to make sure we are in the correct working directory a good way to check this is by running the ```pwd``` command. We also need to know that the file we want to copy is in our directory, a good comman for this is ```ls -lrth```. Now you can run the command below to move it into your new directory.
 ```
