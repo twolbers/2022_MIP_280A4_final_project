@@ -125,6 +125,6 @@ The mapped_to_first_12_contigs.fastq file will contain your new mapped data.
 <img src="Screenshot_20221207_090044.png">
 <img src="Screenshot_20221207_090111.png">
 
-## file that includes the software used.
-[Software used](Software\ used.txt)
+## software used
+<img src="Screenshot_20221207_070043.png">
 
